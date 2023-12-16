@@ -21,7 +21,70 @@
   <h1 id="title"> Surveying Tool - 12/16/23 </h1>
 
   <!-- Add upload button for CSV -->
+
   <!-- Add line/scatter plot -->
+  <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+  <script>
+    const data={
+      datasets:[{
+        label:"Weekly Sales",
+        data:[
+          {x:3, y:18},
+          {x:1, y:16},
+          {x:2, y:12},
+          {x:4, y:9},
+          {x:5, y:8},
+          {x:20, y:20},
+        ],
+        backgroundColor:'rgba(200,0,0,0.2)',
+      
+      }]
+    };
+
+     
+  // let chart = new Chart(myChart, {
+  //   type: 'bar',
+  //   data: {
+  //     label: ['January', 'Feb', 'March','April'],
+  //     datasets: [{
+  //       label:"My first dataset",
+  //       data:[0,10,20,30]
+  //      // yAxisID: 'yAxis'
+  //     }]
+  //   },
+  //   options: {}
+  //     // scales: {
+  //     //   xAxis: {
+  //     //     // The axis for this scale is determined from the first letter of the id as `'x'`
+  //     //     // It is recommended to specify `position` and / or `axis` explicitly.
+  //     //     type: 'time',
+  //     //   }
+  //     // }
+  // });
+  new Chart("myChart",{
+  type: 'scatter',
+  data,
+  options: {
+    scales: {
+      x: {
+       beginAtZero : true,
+       title:{
+         display: true,
+         text:'Places where bird watched'
+       }
+      },
+      y: {
+       beginAtZero : true,
+       title:{
+         display: true,
+         text:'Number of birds watched'
+       }
+      }
+    }
+  }
+});
+</script>
+   
 
 
 </body>
