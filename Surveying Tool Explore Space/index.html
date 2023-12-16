@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chart.js Exploration</title>
+
+  <link rel="stylesheet" href="header-style.css">
+
+  <style>
+    
+  </style>
+</head>
+
+<body>
+  <!-- 1. IMPORTING PACKAGE-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+  <script>
+    // INFORMATION
+    const countries = ["Italy", "France", "Spain", "USA", "Argentina"];
+    const countryValues = [55, 49, 44, 24, 15];
+    const barColors = ["red", "green","blue","orange","brown"];
+  </script>
+
+
+  <!-- HEADER -->
+  <h1 id="title"> Chart.js Exploring </h1>
+  <p>December 12th, 2023</p>
+  <p><a rel="noreferrer noopener" target="_blank" href="https://www.w3schools.com/js/js_graphics_chartjs.asp">w3schools documentation/n</a></p>
+  <p><a rel="noreferrer noopener" target="_blank" href="https://www.chartjs.org/docs/latest/">Official Chart.js documentation</a></p>
+  
+  <!-- BAR CHART -->
+  <h1><i>Bar Chart</i></h1>
+  <canvas id="barChart" style="width:100%; max-width:100rem"></canvas>
+
+  <button onclick="addBarInfo()">Add Bar Info</button>
+  <script>
+    // EMPTY BAR CHART
+    const barChart = new Chart("barChart", {
+      type: "bar",
+      data: {},
+      options: {}
+    });
+
+    var xValues = countries
+    var yValues = countryValues
+    function addBarInfo() {
+      new Chart("barChart", {
+        type: "bar",
+        data: {
+          labels: xValues,
+          datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: "World Wide Wine Production"
+          }
+        }
+      });
+    }
+  </script>
+
+  <hr>
+
+  <!-- PIE CHART -->
+  <h1><i>Pie Chart</i></h1>
+  <canvas id="pieChart" style="width:100%; max-width:100rem"></canvas>
+  <script>
+      const pieChart = 
+       new Chart("pieChart", {
+        type: "pie",
+        data: {
+          labels: xValues,
+          datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: "World Wide Wine Production"
+          }
+        }
+      });
+  </script>
+
+  <hr>
+
+  <!-- Scatter Plot !! -->
+  <h1><i>Scatter Plot</i></h1>
+  <p>This is most likely the kind that we will need for the data surveying tool!</p>
+
+  <p>
+    Note that the data is in the form of x:, y: objects in javascript (which I will need to review),
+    allowing for *hopefully* easy importing of a CSV
+  </p>
+  <canvas id="scatterPlot" stype="width:100%; max-width:100rem"></canvas>
+  <script>
+    const xyValues = [
+      {x:50, y:7},
+      {x:60, y:8},
+      {x:70, y:8},
+      {x:80, y:9},
+      {x:90, y:9},
+      {x:100, y:9},
+      {x:110, y:10},
+      {x:120, y:11},
+      {x:130, y:14},
+      {x:140, y:14},
+      {x:150, y:15}
+    ];
+
+    const scatterPlot = new Chart("scatterPlot", {
+      type: "scatter",
+      data: {
+        datasets: [{
+          pointRadius: 4,
+          pointBackgroundColor: "rgba(0,0,255,1)",
+          data:xyValues
+        }]
+      }
+    })
+  </script>
+  
+  <hr>
+
+  <!-- Line Plot !! -->
+  <h1><i>Line Plot</i></h1>
+  <p>Same as "Scatter Plot,"" however adds a line.</p>
+  <p>To change this in code, simply change from type: "scatter" to "line." In addition, 
+    it will require seperate x and y values but nonetheless.
+  </p>
+
+
+  <canvas id="linePlot" stype="width:100%; max-width:100rem"></canvas>
+  <script>
+
+    const linePlot = new Chart("linePlot", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{
+          pointRadius: 4,
+          pointBackgroundColor: "rgba(0,0,255,1)",
+          data:yValues
+        }]
+      }
+    })
+  </script>
+
+  <hr>
+
+  <h2>Other important notes!</h2>
+  <h3>Adding multiple plots to one canvas</h3>
+  <p>You can add multple charts to one canvas simply by listing mutple datasets, noting however that most likely
+    you will be using the same xValues/labels. 
+  </p>
+
+</body>
+
+</html>

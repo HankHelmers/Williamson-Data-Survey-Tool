@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Chart_js"
+		},
+		{
+			"path": "../../Williamson-Data-Survey-Tool"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Chart_js"
+	}
+}
