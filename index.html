@@ -15,7 +15,7 @@
 
 <body>
    <!-- 1. IMPORTING PACKAGE-->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!-- HEADER -->
   <h1 id="title"> Surveying Tool - 12/16/23 </h1>
@@ -25,7 +25,8 @@
   <!-- Add line/scatter plot -->
   <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
   <script>
-    const data={
+    var data={
+      labels:['Mon','Tue', 'Wed','Thur','Fri','Sat','Sun'],
       datasets:[{
         label:"Weekly Sales",
         data:[
@@ -61,29 +62,35 @@
   //     //   }
   //     // }
   // });
-  new Chart("myChart",{
-  type: 'scatter',
-  data,
-  options: {
+  var options= {
     scales: {
       x: {
-       beginAtZero : true,
+      // beginAtZero : true,
        title:{
          display: true,
          text:'Places where bird watched'
        }
       },
       y: {
-       beginAtZero : true,
+       //beginAtZero : true,
        title:{
          display: true,
          text:'Number of birds watched'
        }
       }
     }
-  }
-});
+  };
+
+var ctxScatter = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctxScatter, {
+      type: 'scatter',
+      data: data,
+      options: options
+    });
 </script>
+<a href="https://www.google.com/" target="_blank">
+<button style="background-color:rgba(200,0,0,0.2);color: maroon ; border-radius:5px">Click here</button>
+</a>
    
 
 
