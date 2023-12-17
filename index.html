@@ -41,38 +41,16 @@
       
       }]
     };
-
-     
-  // let chart = new Chart(myChart, {
-  //   type: 'bar',
-  //   data: {
-  //     label: ['January', 'Feb', 'March','April'],
-  //     datasets: [{
-  //       label:"My first dataset",
-  //       data:[0,10,20,30]
-  //      // yAxisID: 'yAxis'
-  //     }]
-  //   },
-  //   options: {}
-  //     // scales: {
-  //     //   xAxis: {
-  //     //     // The axis for this scale is determined from the first letter of the id as `'x'`
-  //     //     // It is recommended to specify `position` and / or `axis` explicitly.
-  //     //     type: 'time',
-  //     //   }
-  //     // }
-  // });
+  //Creating axis titles 
   var options= {
     scales: {
       x: {
-      // beginAtZero : true,
        title:{
          display: true,
          text:'Places where bird watched'
        }
       },
       y: {
-       //beginAtZero : true,
        title:{
          display: true,
          text:'Number of birds watched'
@@ -80,7 +58,7 @@
       }
     }
   };
-
+  //Adding data to the chart
 var ctxScatter = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctxScatter, {
       type: 'scatter',
@@ -90,8 +68,7 @@ var ctxScatter = document.getElementById('myChart').getContext('2d');
 </script>
 <a href="https://www.google.com/" target="_blank">
 <button style="background-color:rgba(200,0,0,0.2);color: maroon ; border-radius:5px">Click here</button>
-</a>
-   
+</a> 
 
 
 </body>
