@@ -5,6 +5,8 @@ Space to explore the different tasks and resources required in the development o
 1. Retrieve input from user when clicking the graph
 2. Display that input to the user (Adding point to dataset & updating canvas?)
 
-## 12/16/23 - Retreiving input on graph
+## 12/16/23 - Retreiving input on graph (retrieveInput.html)
 Using Chart.js to retreive the X & Y position of relative points on Chart.js graph.
 Main file: retreiveInput.html
+
+## 12/17/23 - Updating the plot with input
