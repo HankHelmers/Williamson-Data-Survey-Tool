@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+"retrieveInput" 
+PROJECT: Data Surveying Tool, Winter Y1
+DATE STARTED: 01/22/24
+
+PURPOSE: Connecting to database & updating input from user. 
+
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retrieving Input</title>
+
+  <!-- BOOTSTRAP IMPORT -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <style>
+    body {
+      margin: 5rem;
+    }
+
+    pre {
+      text-wrap: inherit;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 1. IMPORTING PACKAGES (Chart.js & Bootstrap, respectively)-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <!-- 2. Importing Firebase-->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAfLcvj52n2D-m0g09tzNBuAeROJwXtRu0",
+      authDomain: "williamson-surveying-tool.firebaseapp.com",
+      projectId: "williamson-surveying-tool",
+      storageBucket: "williamson-surveying-tool.appspot.com",
+      messagingSenderId: "860294126553",
+      appId: "1:860294126553:web:470b32b4f0162c98fc57c8",
+      measurementId: "G-CXJ9TJRR0Q"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+  
+
+  <!-- Get the users input -->
+  <!-- Display all the user's input-->
+
+  <script>
+    // INFORMATION
+    const countries = ["Italy", "France", "Spain", "USA", "Argentina"];
+    const countryValues = [55, 49, 44, 24, 15];
+    const barColors = ["red", "green","blue","orange","brown"];
+  </script>
+
+
+  <!-- HEADER -->
+  <h1 id="title"> Chart.js Dynamically Updating the Plot</h1>
+  <p>January 22nd, 2024</p>
+  <p>Goal: Retrieving user input on one page, then showing all other results. 
+  </p>
+
+  <hr>
+  <p><i>Related Links & Responses</i></p>
+  <a rel="noreferrer noopener" target="_blank" href="https://www.chartjs.org/docs/latest/">Chart.js Docs</a><p></p>
+  <a rel="noreferrer noopener" target="_blank" href="https://www.chartjs.org/docs/latest/configuration/interactions.html">Chart.js -- Converting Events into Data</a>
+  
+  <hr>
+
+  <p>
+    
+  </p>
+
+  <code>
+    <pre>scatterPlot.data.datasets[0].data.push({x: xPos, y: yPos});</pre>
+    <pre>scatterPlot.update();</pre>
+  </code>
+
+  <!-- Scatter Plot !! -->
+  <h1><i>Scatter Plot</i></h1>
+
+  <canvas id="scatterPlot" stype="width:85%; max-width:100rem"></canvas>
+
+  <button id="submit_input" onclick="showAllPoints()">Submit Input</button>
+
+  <script>
+    // DATA VALUES
+    var userInput = [
+
+    ];
+
+    var xyValues = [
+      {x:50, y:7},
+      {x:60, y:8},
+      {x:70, y:8},
+      {x:80, y:9},
+      {x:90, y:9},
+      {x:100, y:9},
+      {x:110, y:10},
+      {x:120, y:11},
+      {x:130, y:14},
+      {x:140, y:14},
+      {x:150, y:15}
+    ];
+
+    // DATASET
+    const data = {
+        datasets: [{
+          pointRadius: 4,
+          pointBackgroundColor: "rgba(0,0,250,1)",
+          data:userInput
+        }]
+    };
+
+    // CONFIG
+    const config = {
+        type: "scatter",
+        data,
+        options: {
+            // RESPONDS when canvas is clicked on
+            onClick: (e) => {
+                const canvasPosition = Chart.helpers.getRelativePosition(e, scatterPlot);
+
+                var xPos = scatterPlot.scales["x-axis-1"].getValueForPixel(canvasPosition.x)
+                var yPos = scatterPlot.scales["y-axis-1"].getValueForPixel(canvasPosition.y)
+
+                console.log("xPos: " + xPos)
+                console.log("yPos: " + yPos)
+
+                // Retreive the new point
+                // Add it to the dataset
+                // Show the new graph with that data point
+                userInput.push({x: xPos, y: yPos});
+                //scatterPlot.data.datasets[0].data.push({x: xPos, y: yPos});
+                scatterPlot.update();
+            },
+            scales: {
+                x: {
+                  suggestedMin: 0,
+                  suggestedMax: 160
+                },
+                y: {
+                    suggestedMin: 0,
+                    suggestedMax: 16
+                }
+            }
+  
+        }
+    }
+
+    const scatterPlot = new Chart(
+        "scatterPlot", 
+        config
+    );
+
+    
+
+    // Called by "Show results button" 
+    // - Adds user's input into total data
+    // - Displays all the data
+    function showAllPoints() {
+      console.log("Show all points")
+
+      scatterPlot.data = {
+        labels: ["Your Data", "All Data"],
+        datasets: [{
+          data: userInput,
+          pointBackgroundColor: "rgba(0, 0, 250,1)",
+        }, {
+          data:xyValues,
+          pointBackgroundColor: "rgba(200, 0, 0, 1)"
+        }]
+      }
+      
+      scatterPlot.update();
+    }
+  </script>
+  
+  <hr>
+
+</body>
+
+</html>
