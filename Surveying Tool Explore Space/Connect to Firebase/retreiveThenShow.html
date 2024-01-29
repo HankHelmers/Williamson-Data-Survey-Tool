@@ -57,7 +57,7 @@ PURPOSE: Connecting to database & updating input from user.
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
   </script>
-  
+
 
   <!-- Get the users input -->
   <!-- Display all the user's input-->
@@ -152,12 +152,10 @@ PURPOSE: Connecting to database & updating input from user.
             },
             scales: {
                 x: {
-                  suggestedMin: 0,
-                  suggestedMax: 160
+                    max: 160
                 },
                 y: {
-                    suggestedMin: 0,
-                    suggestedMax: 16
+                    max: 16
                 }
             }
   

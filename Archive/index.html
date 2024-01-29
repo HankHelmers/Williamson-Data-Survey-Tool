@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surveying Tool</title>
+
+ <!--<link rel="stylesheet" href="header-style.css">-->
+
+  <style>
+    
+  </style>
+</head>
+
+<body>
+   <!-- 1. IMPORTING PACKAGE-->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- HEADER -->
+  <h1 id="title"> Surveying Tool - 12/16/23 </h1>
+
+  <!-- Add upload button for CSV -->
+
+  <!-- Add line/scatter plot -->
+  <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+  <script>
+    var data={
+      labels:['Mon','Tue', 'Wed','Thur','Fri','Sat','Sun'],
+      datasets:[{
+        label:"Weekly Sales",
+        data:[
+          {x:3, y:18},
+          {x:1, y:16},
+          {x:2, y:12},
+          {x:4, y:9},
+          {x:5, y:8},
+          {x:20, y:20},
+        ],
+        backgroundColor:'rgba(200,0,0,0.2)',
+      
+      }]
+    };
+  //Creating axis titles 
+  var options= {
+    scales: {
+      x: {
+       title:{
+         display: true,
+         text:'Places where bird watched'
+       }
+      },
+      y: {
+       title:{
+         display: true,
+         text:'Number of birds watched'
+       }
+      }
+    }
+  };
+  //Adding data to the chart
+var ctxScatter = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctxScatter, {
+      type: 'scatter',
+      data: data,
+      options: options
+    });
+</script>
+<a href="https://www.google.com/" target="_blank">
+<button style="background-color:rgba(200,0,0,0.2);color: maroon ; border-radius:5px">Click here</button>
+</a> 
+
+
+</body>
+
+</html>

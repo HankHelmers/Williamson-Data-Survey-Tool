@@ -1,76 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surveying Tool</title>
+        <!--Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </head>
+    <body >
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand survey-item" href="#">Your Surveys</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
 
- <!--<link rel="stylesheet" href="header-style.css">-->
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home</a>
+                    <a class="nav-item nav-link" href="#">Account</a>
+                  </div>
+                </div>
+              </nav>
 
-  <style>
-    
-  </style>
-</head>
-
-<body>
-   <!-- 1. IMPORTING PACKAGE-->
-   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- HEADER -->
-  <h1 id="title"> Surveying Tool - 12/16/23 </h1>
-
-  <!-- Add upload button for CSV -->
-
-  <!-- Add line/scatter plot -->
-  <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-  <script>
-    var data={
-      labels:['Mon','Tue', 'Wed','Thur','Fri','Sat','Sun'],
-      datasets:[{
-        label:"Weekly Sales",
-        data:[
-          {x:3, y:18},
-          {x:1, y:16},
-          {x:2, y:12},
-          {x:4, y:9},
-          {x:5, y:8},
-          {x:20, y:20},
-        ],
-        backgroundColor:'rgba(200,0,0,0.2)',
-      
-      }]
-    };
-  //Creating axis titles 
-  var options= {
-    scales: {
-      x: {
-       title:{
-         display: true,
-         text:'Places where bird watched'
-       }
-      },
-      y: {
-       title:{
-         display: true,
-         text:'Number of birds watched'
-       }
-      }
-    }
-  };
-  //Adding data to the chart
-var ctxScatter = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctxScatter, {
-      type: 'scatter',
-      data: data,
-      options: options
-    });
-</script>
-<a href="https://www.google.com/" target="_blank">
-<button style="background-color:rgba(200,0,0,0.2);color: maroon ; border-radius:5px">Click here</button>
-</a> 
-
-
-</body>
-
+          <div class="flex-container">
+                <a href="survey.html" class="survey-item">
+                    <button class="btn btn-primary btn-lg btn-block">
+                        <h2 class="center-vertically">Survey 1</h2>
+                        <p class="center-vertically">Comparison of X and Y</p>
+                    </button> 
+                </a>
+          </div>
+        
+        <div class="mx-auto p-2 bg-secondary text-light rounded" style="width: 200px;">
+            Create New Survey
+        </div>
+    </body>
 </html>
