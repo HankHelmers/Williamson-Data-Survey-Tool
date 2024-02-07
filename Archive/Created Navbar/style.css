@@ -1,0 +1,46 @@
+
+html,
+body,
+.full-screen {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+}
+
+.flex-container {
+    display: flex;
+    
+    > * {
+
+		flex: 0 0 auto;			
+	}
+}
+
+.stretchy {
+	flex: 1 1 auto;
+}
+
+.column {
+	flex-direction: column;
+}
+
+.survey-item {
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.center {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 80vh;
+    width: 100vw;
+  }

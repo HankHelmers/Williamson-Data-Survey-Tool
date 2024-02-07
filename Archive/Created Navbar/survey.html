@@ -80,7 +80,12 @@
             // CONFIG
             const config = {
                 type: "scatter",
-                data,
+                datasets: [{
+                    label: 'Your Input',
+                    pointRadius: 4,
+                    pointBackgroundColor: "rgba(0,0,250,1)",
+                    data:userInput
+                }],
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
